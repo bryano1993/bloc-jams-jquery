@@ -17,6 +17,7 @@
 
      song.element.on('click', event => { // this will play and pause a song.
          player.playPause(song);
+         $('button#play-pause').attr('playState', player.playState); // This will enable the player bar's Play/Pause button and the play/pause icon on each song row to be in sync
      });
 
 
