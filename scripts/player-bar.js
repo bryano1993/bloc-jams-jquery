@@ -17,3 +17,12 @@ $('button#next').on('click', function(){ // we add a click handler
   const nextSong = album.songs[nextSongIndex];
   player.playPause(nextSong);
 });
+
+$('button#previous').on('click', function(){
+   if (player.playState !== 'playing') { return; }
+   const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
+   const previousSongIndex = currentSongIndex - 1;
+   if (previousSongIndex >= album.songs.length) { return; }
+   const previousSong = album.songs[previousSongIndex];
+   player.playPause(previousSong);
+ });
