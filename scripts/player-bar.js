@@ -18,6 +18,8 @@ $('button#next').on('click', function(){ // we add a click handler
   player.playPause(nextSong);
 });
 
+
+
 $('button#previous').on('click', function(){
    if (player.playState !== 'playing') { return; }
    const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
@@ -26,3 +28,19 @@ $('button#previous').on('click', function(){
    const previousSong = album.songs[previousSongIndex];
    player.playPause(previousSong);
  });
+
+ $('#time-control input').on('input', function (event) {
+      player.skipTo(event.target.value);
+    });
+
+// Pass  setInterval() an empty function (a callback function) as its first parameter and the number 1000 as the next parameter. 1000 is the number of milliseconds
+// between intervals. Since there are 1000 milliseconds in a second, the callback function will execute once every second.
+setInterval( () => {
+     if (player.playState !== 'playing') { return; }
+     const currentTime = player.getTime();
+     const duration = player.getDuration();
+     const percent = (currentTime / duration) * 100;
+     $('#time-control .current-time').text( currentTime );
+     $('#time-control input').val(percent);
+   }, 1000);
+ }
