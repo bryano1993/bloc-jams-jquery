@@ -3,7 +3,7 @@
     player.playPause(); // and will call player.playPause. It will now play and pause song but the pause and play button will fail to show up
     $(this).attr('playState', player.playState);
   });
-}
+
 
 // That means that setting the playState attribute on our play/pause button will cause the icons to show/hide appropriately. We can use the jQuery
 // .attr() method to set the attribute, and we can set it to the player object's playState property. Reference your analysis of the player.js file
